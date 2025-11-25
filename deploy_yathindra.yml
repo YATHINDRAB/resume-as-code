@@ -1,0 +1,127 @@
+---
+- name: Deploy Yathindra as DevOps Engineer
+  hosts: devops_team
+  gather_facts: false
+
+  vars:
+    candidate:
+      name: "Yathindra Bolloju"
+      title: "DevOps Engineer"
+      location: "Hyderabad, India"
+      availability: "Immediate"
+      date_of_birth: "199X-09-17"
+      contact:
+        phone: "9618560664"
+        email: "yathindrab17@gmail.com"
+      summary: >
+        DevOps Engineer with 2+ years of hands-on experience through freelancing,
+        projects, and training. Proficient in AWS, CI/CD pipelines, containerization,
+        and automation tools. Certified in AWS DevOps and Docker, with expertise in
+        deploying scalable infrastructure, improving release processes, and ensuring
+        system reliability.
+
+      skills:
+        cloud:
+          - "AWS EC2"
+          - "AWS S3"
+          - "AWS VPC"
+          - "AWS Lambda"
+          - "AWS IAM"
+        automation_iac:
+          - "Terraform"
+          - "Ansible"
+        containers_orchestration:
+          - "Docker"
+          - "Kubernetes (Basics)"
+        cicd:
+          - "Jenkins"
+          - "Git"
+        scripting:
+          - "Shell scripting"
+          - "CLI automation"
+          - "API automation"
+
+      experience:
+        - company: "Freelance & Project-based"
+          role: "DevOps Engineer"
+          location: "Remote"
+          start: "2023-01"
+          end: "Present"
+          responsibilities:
+            - "Designed and deployed AWS infrastructure (EC2, S3, IAM, VPC, Lambda)."
+            - "Automated provisioning and configuration using Terraform and Ansible."
+            - "Built CI/CD pipelines using Jenkins and Git for faster deployments."
+            - "Containerized applications with Docker and deployed services on Kubernetes."
+            - "Monitored system health, optimized cost usage, and implemented backup strategies."
+            - "Collaborated with developers and clients in freelance projects."
+        - company: "Kenra Technology LLP"
+          role: "Associate Engineer (Intern – Non-IT)"
+          location: "Hyderabad, India"
+          start: "2023-03"
+          end: "2024-06"
+          responsibilities:
+            - "Supported operations while building DevOps skills in parallel."
+        - company: "Capital Plus"
+          role: "Sales Officer (Non-IT)"
+          location: "Hyderabad, India"
+          start: "2024-06"
+          end: "Present"
+          responsibilities:
+            - "Worked in sales for financial stability while continuing DevOps freelance projects."
+
+      education:
+        - institution: "KG Reddy College of Engineering and Technology (JNTU)"
+          level: "B.Tech"
+          cgpa: 7.04
+          year_of_completion: 2023
+        - institution: "GPT Polytechnic Shivampet (SBTET)"
+          level: "Diploma"
+          cgpa: 7.58
+          year_of_completion: 2020
+        - institution: "Twinkle Star High School"
+          level: "SSC"
+          cgpa: 9.20
+          year_of_completion: 2017
+
+      certifications:
+        - "AWS Certified DevOps Engineer"
+        - "Docker for DevOps – Certified"
+
+      leadership_activities:
+        - "Vice-President – Student Council"
+        - "Member – T-Hub Start-up Club, E-Cell Networking, CIST-Lead"
+        - "Volunteer – CREED, IIC Impulse, TASK, Palle Srujana"
+
+  tasks:
+    - name: Display candidate profile
+      debug:
+        var: candidate
+
+    - name: Announce deployment of candidate into DevOps team
+      debug:
+        msg: >
+          Deploying {{ candidate.name }} as {{ candidate.title }} in a remote role
+          from {{ candidate.location }} with availability: {{ candidate.availability }}.
+
+    - name: Validate core DevOps stack presence
+      assert:
+        that:
+          - "'AWS EC2' in candidate.skills.cloud"
+          - "'Terraform' in candidate.skills.automation_iac"
+          - "'Ansible' in candidate.skills.automation_iac"
+          - "'Docker' in candidate.skills.containers_orchestration"
+          - "'Jenkins' in candidate.skills.cicd"
+        success_msg: "Core DevOps stack validated successfully for {{ candidate.name }}."
+        fail_msg: "Candidate does not meet the defined core DevOps stack requirements."
+
+    - name: Summarize years of experience (approximate)
+      debug:
+        msg: >
+          {{ candidate.name }} has approximately 2+ years of hands-on DevOps experience
+          via freelancing, projects, and parallel work.
+
+    - name: Confirm remote work compatibility
+      debug:
+        msg: >
+          {{ candidate.name }} is used to remote and freelance collaboration with
+          developers and clients, and is comfortable in distributed/remote teams.
